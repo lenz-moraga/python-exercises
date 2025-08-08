@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4346d765-7fa6-46d3-8662-01b36c3f7332",
+        "title": "tarea simple",
+        "priority": 2,
+        "created_at": "2025-08-07T18:26:58.588773",
+        "completed": false,
+        "type": "Task"
+    },
+    {
+        "id": "86591393-a738-45c2-a64d-51deacc19939",
+        "title": "tarea simple 2",
+        "priority": 2,
+        "created_at": "2025-08-07T18:30:06.312092",
+        "completed": false,
+        "type": "Task"
+    },
+    {
+        "id": "66d87313-fe19-408a-833f-e60802312780",
+        "title": "tarea con limite de tiempo",
+        "priority": 1,
+        "created_at": "2025-08-07T20:08:48.798791",
+        "completed": false,
+        "type": "TimedTask",
+        "deadline": "2025-08-07T00:00:00"
+    },
+    {
+        "id": "0f4442d7-89cf-4207-b867-21b941a18981",
+        "title": "tarea vencida",
+        "priority": 3,
+        "created_at": "2025-08-07T20:23:33.915960",
+        "completed": false,
+        "type": "TimedTask",
+        "deadline": "2025-08-06T00:00:00"
+    },
+    {
+        "id": "005a93ad-9498-40e2-bf48-774a324aac8f",
+        "title": "simple task",
+        "priority": 1,
+        "created_at": "2025-08-08T16:06:04.766060",
+        "completed": false,
+        "type": "Task"
+    }
+]
