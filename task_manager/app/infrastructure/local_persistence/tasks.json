@@ -1,0 +1,36 @@
+[
+    {
+        "id": "34c9774d-c98e-4d3b-8705-5dabc0254d90",
+        "title": "tareaa",
+        "priority": 1,
+        "created_at": "2025-08-08T21:19:24.838699",
+        "completed": true,
+        "type": "Task"
+    },
+    {
+        "id": "9f3e3f3d-e159-4ae7-8008-190cb1f4f3aa",
+        "title": "simple task",
+        "priority": 2,
+        "created_at": "2025-08-08T21:29:38.997143",
+        "completed": false,
+        "type": "Task"
+    },
+    {
+        "id": "d63bb0b6-a18c-41b4-a564-f959148cb8b0",
+        "title": "timed task",
+        "priority": 3,
+        "created_at": "2025-08-08T21:30:08.385147",
+        "completed": false,
+        "type": "TimedTask",
+        "deadline": "2025-08-10T00:00:00"
+    },
+    {
+        "id": "6c28a657-2bb7-4d0e-bb65-c4fca2ef0a25",
+        "title": "recurring task",
+        "priority": 3,
+        "created_at": "2025-08-08T21:30:29.779610",
+        "completed": false,
+        "type": "RecurringTask",
+        "recurrence": "daily"
+    }
+]

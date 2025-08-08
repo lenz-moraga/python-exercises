@@ -1,22 +1,23 @@
-from task_manager import TaskManager
 from datetime import datetime
-from task import TimedTask, RecurringTask
-
+from app.domain.services.task_service import TaskService
+from app.domain.models import TimedTask, RecurringTask
+from app.infrastructure.repositores.task_repository import TaskRespository
 
 class CLI:
     def __init__(self):
-        self.manager = TaskManager()
+        self.repo = TaskRespository()
+        self.service = TaskService(self.repo)
 
     def run(self):
         while True:
-            print("\n--- タスクマネージャー --- Gestor de Tareas ---")
-            print("1. シンプルなタスクを追加する (Add simple task)")
-            print("2. 締切付きのタスクを追加する (Add timed task)")
-            print("3. 繰り返しタスクを追加する (Add recurring task)")
-            print("4. 完了としてマークする (Complete task)")
-            print("5. 未完了としてマークする (Uncomplete task)")
-            print("6. タスクを一覧表示する (List tasks)")
-            print("7. 終了する (Exit)")
+            print("\n--- Gestor de Tareas ---")
+            print("1. Agregar tarea simple")
+            print("2. Agregar tarea con fecha límite")
+            print("3. Agregar tarea recurrente")
+            print("4. Marcar como completada")
+            print("5. Marcar como no completada")
+            print("6. Listar tareas")
+            print("7. Salir")
 
 
             option = input("Selecciona una opción: ").strip()
@@ -41,7 +42,7 @@ class CLI:
     def add_task(self):
         title = input("Título: ").strip()
         priority = self.ask_priority()
-        self.manager.add_task(title, priority)
+        self.service.add_task(title, priority)
         print("✅ Tarea simple agregada.")
 
     def add_timed_task(self):
@@ -54,7 +55,7 @@ class CLI:
             print("❌ Fecha inválida.")
             return
         task = TimedTask(title, priority, deadline)
-        self.manager.add_custom_task(task)
+        self.service.add_custom_task(task)
         print("✅ Tarea con fecha límite agregada.")
 
     def add_recurring_task(self):
@@ -66,25 +67,25 @@ class CLI:
             print("❌ Recurrencia no válida.")
             return
         task = RecurringTask(title, priority, recurrence)
-        self.manager.add_custom_task(task)
+        self.service.add_custom_task(task)
         print("✅ Tarea recurrente agregada.")
 
     def complete_task(self):
         task_id = input("ID de la tarea: ").strip()
-        if self.manager.complete_task(task_id):
+        if self.service.complete_task(task_id):
             print("✅ Completada.")
         else:
             print("❌ No encontrada.")
 
     def uncomplete_task(self):
         task_id = input("ID de la tarea: ").strip()
-        if self.manager.uncomplete_task(task_id):
+        if self.service.uncomplete_task(task_id):
             print("[ ] Marcada como no completada.")
         else:
             print("❌ No encontrada.")
 
     def list_tasks(self):
-        tasks = self.manager.list_tasks(sort_by="completed")
+        tasks = self.service.list_tasks(sort_by="completed")
         if not tasks:
             print("No hay tareas.")
             return
