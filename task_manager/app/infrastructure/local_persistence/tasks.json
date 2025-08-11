@@ -20,7 +20,7 @@
         "title": "timed task",
         "priority": 3,
         "created_at": "2025-08-08T21:30:08.385147",
-        "completed": false,
+        "completed": true,
         "type": "TimedTask",
         "deadline": "2025-08-10T00:00:00"
     },
@@ -32,5 +32,21 @@
         "completed": false,
         "type": "RecurringTask",
         "recurrence": "daily"
+    },
+    {
+        "id": "8910d1d6-2d18-47f1-8403-48465b76a1bc",
+        "title": "tarea web",
+        "priority": 3,
+        "created_at": "2025-08-08T22:03:13.653648",
+        "completed": false,
+        "type": "Task"
+    },
+    {
+        "id": "b94bfb43-902f-41bd-8a99-a82e4d751bb0",
+        "title": "tarea 2",
+        "priority": 2,
+        "created_at": "2025-08-08T22:03:49.162491",
+        "completed": true,
+        "type": "Task"
     }
 ]
