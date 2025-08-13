@@ -1,12 +1,20 @@
+from typing import List
 import os
 import json
 from app.domain.factories.task_factory import TaskFactory
+from app.domain.models.task import Task
+from app.infrastructure.repositories.base_task_repository import TaskRepository
 
-class TaskRespository:
+class JsonTaskRespository(TaskRepository):
     def __init__(self, filepath="app/infrastructure/local_persistence/tasks.json"):
         self.file_path = filepath
 
-    def save_tasks(self, tasks):
+    def save_task(self, task: Task) -> None:
+        tasks = self.load_tasks()
+        tasks.append(task)
+        self._save_to_file(tasks)
+
+    def _save_to_file(self, tasks: List[Task]):
         with open(self.file_path, "w") as f:
             json.dump([task.to_dict() for task in tasks], f, indent=4)
 

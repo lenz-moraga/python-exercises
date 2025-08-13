@@ -3,22 +3,20 @@ from app.domain.models import Task
 class TaskService:
     def __init__(self, repository):
         self.repository = repository
-        self.tasks = self.repository.load_tasks()
 
     def add_task(self, title, priority):
         task = Task(title, priority)
-        self.tasks.append(task)
-        self.repository.save_tasks(self.tasks)
+        self.repository.save_task(task)
 
     def add_custom_task(self, task):
         self.tasks.append(task)
-        self.repository.save_tasks(self.tasks)
+        self.repository.save_task(self.tasks)
 
     def complete_task(self, task_id):
         for task in self.tasks:
             if task.id.startswith(task_id):
                 task.completed = True
-                self.repository.save_tasks(self.tasks)
+                self.repository.save_task(self.tasks)
                 return True
         return False
 
@@ -26,7 +24,7 @@ class TaskService:
         for task in self.tasks:
             if task.id.startswith(task_id):
                 task.completed = False
-                self.repository.save_tasks(self.tasks)
+                self.repository.save_task(self.tasks)
                 return True
         return False
 

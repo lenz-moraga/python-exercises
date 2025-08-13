@@ -3,8 +3,8 @@ from datetime import datetime
 
 
 class Task:
-    def __init__(self, title, priority):
-        self.id = str(uuid.uuid4())
+    def __init__(self, title, priority, id=None, completed=False):
+        self.id = id if id else str(uuid.uuid4())
         self.title = title
         self.priority = priority
         self.created_at = datetime.now()
