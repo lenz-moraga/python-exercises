@@ -1,15 +1,28 @@
 import uuid
 from datetime import datetime
+from enum import Enum
+
+
+class Priority(Enum):
+    High = ("Para Ayer",)
+    Medium = ("Para Hoy",)
+    Low = "Aguanta"
+
+
+class TaskType(Enum):
+    Task = ("Task",)
+    TimedTask = ("Timed Task",)
+    RecursionTAsk = "Recurring Task"
 
 
 class Task:
-    def __init__(self, title, priority, id=None, completed=False):
-        self.id = id if id else str(uuid.uuid4())
+    def __init__(self, title, priority=Priority.LOW, id=None, completed=False):
+        self.id = id or str(uuid.uuid4())
         self.title = title
         self.priority = priority
         self.created_at = datetime.now()
-        self.completed = False
-        self.type = "Task"
+        self.completed = completed
+        self.type = TaskType.Task
 
     def to_dict(self):
         return {
@@ -18,7 +31,7 @@ class Task:
             "priority": self.priority,
             "created_at": self.created_at.isoformat(),
             "completed": self.completed,
-            "type": self.type
+            "type": self.type,
         }
 
     @classmethod
@@ -28,3 +41,6 @@ class Task:
         task.created_at = datetime.fromisoformat(data["created_at"])
         task.completed = data["completed"]
         return task
+
+    def __repr__(self):
+        return f"Task(id={self.id}, title={self.title}, priority={self.priority}, created_at={self.created_at}, completed={self.completed})"
